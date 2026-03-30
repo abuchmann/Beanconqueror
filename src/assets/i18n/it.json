@@ -1199,23 +1199,23 @@
     },
     "MQTT": {
         "SECTION_TITLE": "MQTT",
-        "ACTIVATE": "Activate MQTT export",
-        "URL": "Broker URL (WebSocket)",
+        "ACTIVATE": "Attiva esportazione MQTT",
+        "URL": "URL del broker (WebSocket)",
         "URL_PLACEHOLDER": "ws://192.168.1.100:9001",
-        "USERNAME": "Username",
+        "USERNAME": "Nome utente",
         "PASSWORD": "Password",
-        "TOPIC_PREFIX": "Topic prefix",
-        "RECENT_BREWS_COUNT": "Number of recent brews to publish",
-        "PUBLISH_AUTOMATIC": "Publish each brewing automatically?",
-        "PUBLISH_AUTOMATIC_TOOLTIP": "Publishes brew data to your MQTT broker when saving a brew. Requires WebSocket enabled on your MQTT broker.",
-        "PUBLISH_ALL": "Publish all brews",
+        "TOPIC_PREFIX": "Prefisso del topic",
+        "RECENT_BREWS_COUNT": "Numero di preparazioni recenti da pubblicare",
+        "PUBLISH_AUTOMATIC": "Pubblicare ogni preparazione automaticamente?",
+        "PUBLISH_AUTOMATIC_TOOLTIP": "Pubblica i dati della preparazione sul broker MQTT al salvataggio. Richiede WebSocket abilitato sul broker MQTT.",
+        "PUBLISH_ALL": "Pubblica tutte le preparazioni",
         "CONNECTION": {
-            "SUCCESSFULLY": "MQTT connection established successfully.",
-            "UNSUCCESSFULLY": "MQTT connection could not be established."
+            "SUCCESSFULLY": "Connessione MQTT stabilita con successo.",
+            "UNSUCCESSFULLY": "Impossibile stabilire la connessione MQTT."
         },
         "PUBLISH": {
-            "SUCCESSFULLY": "Brew data published to MQTT.",
-            "UNSUCCESSFULLY": "Brew data could not be published to MQTT."
+            "SUCCESSFULLY": "Dati della preparazione pubblicati su MQTT.",
+            "UNSUCCESSFULLY": "Impossibile pubblicare i dati su MQTT."
         }
     },
     "SMART_SCALE_AUTO_START_LISTENING": "Avvia automaticamente il timer",

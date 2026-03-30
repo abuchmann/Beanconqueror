@@ -1199,23 +1199,23 @@
     },
     "MQTT": {
         "SECTION_TITLE": "MQTT",
-        "ACTIVATE": "Activate MQTT export",
-        "URL": "Broker URL (WebSocket)",
+        "ACTIVATE": "MQTT dışa aktarımını etkinleştir",
+        "URL": "Broker URL'si (WebSocket)",
         "URL_PLACEHOLDER": "ws://192.168.1.100:9001",
-        "USERNAME": "Username",
-        "PASSWORD": "Password",
-        "TOPIC_PREFIX": "Topic prefix",
-        "RECENT_BREWS_COUNT": "Number of recent brews to publish",
-        "PUBLISH_AUTOMATIC": "Publish each brewing automatically?",
-        "PUBLISH_AUTOMATIC_TOOLTIP": "Publishes brew data to your MQTT broker when saving a brew. Requires WebSocket enabled on your MQTT broker.",
-        "PUBLISH_ALL": "Publish all brews",
+        "USERNAME": "Kullanıcı adı",
+        "PASSWORD": "Şifre",
+        "TOPIC_PREFIX": "Konu öneki",
+        "RECENT_BREWS_COUNT": "Yayınlanacak son demleme sayısı",
+        "PUBLISH_AUTOMATIC": "Her demlemeyi otomatik olarak yayınla?",
+        "PUBLISH_AUTOMATIC_TOOLTIP": "Demleme kaydedilirken MQTT brokerınıza demleme verilerini yayınlar. MQTT brokerınızda WebSocket etkin olmalıdır.",
+        "PUBLISH_ALL": "Tüm demlemeleri yayınla",
         "CONNECTION": {
-            "SUCCESSFULLY": "MQTT connection established successfully.",
-            "UNSUCCESSFULLY": "MQTT connection could not be established."
+            "SUCCESSFULLY": "MQTT bağlantısı başarıyla kuruldu.",
+            "UNSUCCESSFULLY": "MQTT bağlantısı kurulamadı."
         },
         "PUBLISH": {
-            "SUCCESSFULLY": "Brew data published to MQTT.",
-            "UNSUCCESSFULLY": "Brew data could not be published to MQTT."
+            "SUCCESSFULLY": "Demleme verileri MQTT'ye yayınlandı.",
+            "UNSUCCESSFULLY": "Demleme verileri MQTT'ye yayınlanamadı."
         }
     },
     "SMART_SCALE_AUTO_START_LISTENING": "Zamanlayıcı otomatik olarak başlatılsın mı?",

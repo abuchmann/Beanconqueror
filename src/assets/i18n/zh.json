@@ -1199,23 +1199,23 @@
     },
     "MQTT": {
         "SECTION_TITLE": "MQTT",
-        "ACTIVATE": "Activate MQTT export",
-        "URL": "Broker URL (WebSocket)",
+        "ACTIVATE": "启用 MQTT 导出",
+        "URL": "Broker 地址 (WebSocket)",
         "URL_PLACEHOLDER": "ws://192.168.1.100:9001",
-        "USERNAME": "Username",
-        "PASSWORD": "Password",
-        "TOPIC_PREFIX": "Topic prefix",
-        "RECENT_BREWS_COUNT": "Number of recent brews to publish",
-        "PUBLISH_AUTOMATIC": "Publish each brewing automatically?",
-        "PUBLISH_AUTOMATIC_TOOLTIP": "Publishes brew data to your MQTT broker when saving a brew. Requires WebSocket enabled on your MQTT broker.",
-        "PUBLISH_ALL": "Publish all brews",
+        "USERNAME": "用户名",
+        "PASSWORD": "密码",
+        "TOPIC_PREFIX": "主题前缀",
+        "RECENT_BREWS_COUNT": "发布最近冲煮的数量",
+        "PUBLISH_AUTOMATIC": "自动发布每次冲煮？",
+        "PUBLISH_AUTOMATIC_TOOLTIP": "保存冲煮时将数据发布到 MQTT Broker。需要在 MQTT Broker 上启用 WebSocket。",
+        "PUBLISH_ALL": "发布所有冲煮",
         "CONNECTION": {
-            "SUCCESSFULLY": "MQTT connection established successfully.",
-            "UNSUCCESSFULLY": "MQTT connection could not be established."
+            "SUCCESSFULLY": "MQTT 连接成功。",
+            "UNSUCCESSFULLY": "无法建立 MQTT 连接。"
         },
         "PUBLISH": {
-            "SUCCESSFULLY": "Brew data published to MQTT.",
-            "UNSUCCESSFULLY": "Brew data could not be published to MQTT."
+            "SUCCESSFULLY": "冲煮数据已发布到 MQTT。",
+            "UNSUCCESSFULLY": "无法将冲煮数据发布到 MQTT。"
         }
     },
     "SMART_SCALE_AUTO_START_LISTENING": "自动启动计时器？",
