@@ -30,7 +30,7 @@ export class MqttService {
       clean: true,
       will: {
         topic: `${prefix}/status`,
-        payload: Buffer.from('offline'),
+        payload: 'offline',
         retain: true,
         qos: 1,
       },
