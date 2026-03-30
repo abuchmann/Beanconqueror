@@ -70,6 +70,7 @@ import { UIMillStorage } from '../../../services/uiMillStorage';
 import { UIPreparationStorage } from '../../../services/uiPreparationStorage';
 import { UISettingsStorage } from '../../../services/uiSettingsStorage';
 import { UIToast } from '../../../services/uiToast';
+import { MqttService } from '../../../services/mqttService/mqtt-service.service';
 import { VisualizerService } from '../../../services/visualizerService/visualizer-service.service';
 import { SettingsPopoverBluetoothActionsComponent } from '../../settings/settings-popover-bluetooth-actions/settings-popover-bluetooth-actions.component';
 
@@ -121,6 +122,7 @@ export class BrewAddComponent implements OnInit, OnDestroy {
   private readonly uiAnalytics = inject(UIAnalytics);
   private readonly bleManager = inject(CoffeeBluetoothDevicesService);
   private readonly visualizerService = inject(VisualizerService);
+  private readonly mqttService = inject(MqttService);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
   private readonly hapticService = inject(HapticService);
   private readonly uiHelper = inject(UIHelper);
@@ -364,6 +366,8 @@ export class BrewAddComponent implements OnInit, OnDestroy {
 
       this.manageUploadToVisualizer(addedBrewObj);
 
+      this.managePublishToMqtt(addedBrewObj);
+
       this.manageCaffeineConsumption();
 
       await this.manageOpenDateForBean(addedBrewObj);
@@ -559,6 +563,16 @@ export class BrewAddComponent implements OnInit, OnDestroy {
       }
     } else {
       this.uiLog.log('Visualizer not active or upload automatic not activated');
+    }
+  }
+
+  private managePublishToMqtt(addedBrewObj: Brew): void {
+    if (
+      this.settings.mqtt_active &&
+      this.settings.mqtt_publish_automatic
+    ) {
+      this.uiLog.log('Publish brew to MQTT');
+      this.mqttService.publishBrewData(addedBrewObj);
     }
   }
 

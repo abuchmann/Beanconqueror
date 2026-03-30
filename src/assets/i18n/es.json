@@ -1197,6 +1197,27 @@
         "NOT_ALL_SHOTS_UPLOADED": "No se han podido subir todas las preparaciones",
         "ALL_SHOTS_UPLOADED": "Se han subido todas las preparaciones"
     },
+    "MQTT": {
+        "SECTION_TITLE": "MQTT",
+        "ACTIVATE": "Activate MQTT export",
+        "URL": "Broker URL (WebSocket)",
+        "URL_PLACEHOLDER": "ws://192.168.1.100:9001",
+        "USERNAME": "Username",
+        "PASSWORD": "Password",
+        "TOPIC_PREFIX": "Topic prefix",
+        "RECENT_BREWS_COUNT": "Number of recent brews to publish",
+        "PUBLISH_AUTOMATIC": "Publish each brewing automatically?",
+        "PUBLISH_AUTOMATIC_TOOLTIP": "Publishes brew data to your MQTT broker when saving a brew. Requires WebSocket enabled on your MQTT broker.",
+        "PUBLISH_ALL": "Publish all brews",
+        "CONNECTION": {
+            "SUCCESSFULLY": "MQTT connection established successfully.",
+            "UNSUCCESSFULLY": "MQTT connection could not be established."
+        },
+        "PUBLISH": {
+            "SUCCESSFULLY": "Brew data published to MQTT.",
+            "UNSUCCESSFULLY": "Brew data could not be published to MQTT."
+        }
+    },
     "SMART_SCALE_AUTO_START_LISTENING": "¿Iniciar temporizador automáticamente?",
     "SMART_SCALE_AUTO_START_LISTENING_DESCRIPTION": "Iniciar automáticamente el temporizador al alcanzar el siguiente umbral de peso",
     "CHOOSE_REFERENCE_GRAPH": "Elegir gráfico a replicar",

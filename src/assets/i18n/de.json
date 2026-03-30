@@ -1265,6 +1265,27 @@
         "NOT_ALL_SHOTS_UPLOADED": "Nicht alle Brühungen konnten hochgeladen werden",
         "ALL_SHOTS_UPLOADED": "Alle Brühungen konnten hochgeladen werden"
     },
+    "MQTT": {
+        "SECTION_TITLE": "MQTT",
+        "ACTIVATE": "MQTT-Export aktivieren",
+        "URL": "Broker-URL (WebSocket)",
+        "URL_PLACEHOLDER": "ws://192.168.1.100:9001",
+        "USERNAME": "Benutzername",
+        "PASSWORD": "Passwort",
+        "TOPIC_PREFIX": "Topic-Präfix",
+        "RECENT_BREWS_COUNT": "Anzahl der letzten Brühungen",
+        "PUBLISH_AUTOMATIC": "Jede Brühung automatisch veröffentlichen?",
+        "PUBLISH_AUTOMATIC_TOOLTIP": "Veröffentlicht Brühdaten an deinen MQTT-Broker beim Speichern einer Brühung. WebSocket muss am MQTT-Broker aktiviert sein.",
+        "PUBLISH_ALL": "Alle Brühungen veröffentlichen",
+        "CONNECTION": {
+            "SUCCESSFULLY": "MQTT-Verbindung erfolgreich hergestellt.",
+            "UNSUCCESSFULLY": "MQTT-Verbindung konnte nicht hergestellt werden."
+        },
+        "PUBLISH": {
+            "SUCCESSFULLY": "Brühdaten an MQTT veröffentlicht.",
+            "UNSUCCESSFULLY": "Brühdaten konnten nicht an MQTT veröffentlicht werden."
+        }
+    },
     "SMART_SCALE_AUTO_START_LISTENING": "Timer automatisch starten?",
     "SMART_SCALE_AUTO_START_LISTENING_DESCRIPTION": "Timer automatisch starten, bei der Erreichung folgendes Gewichtswertes",
     "CHOOSE_REFERENCE_GRAPH": "Referenzgraph auswählen",

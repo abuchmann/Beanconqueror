@@ -124,6 +124,7 @@ import { UIToast } from '../../services/uiToast';
 import { UIUpdate } from '../../services/uiUpdate';
 import { UiVersionStorage } from '../../services/uiVersionStorage';
 import { UIWaterStorage } from '../../services/uiWaterStorage';
+import { MqttService } from '../../services/mqttService/mqtt-service.service';
 import { VisualizerService } from '../../services/visualizerService/visualizer-service.service';
 
 @Component({
@@ -194,6 +195,7 @@ export class SettingsPage {
   private readonly uiFileHelper = inject(UIFileHelper);
   private readonly uiExportImportHelper = inject(UIExportImportHelper);
   private readonly visualizerService = inject(VisualizerService);
+  private readonly mqttService = inject(MqttService);
   private readonly textToSpeech = inject(TextToSpeechService);
   private readonly themeService = inject(ThemeService);
 
@@ -1756,6 +1758,29 @@ export class SettingsPage {
         true,
       );
     }
+  }
+
+  public async checkMqttConnection() {
+    if (await this.mqttService.checkConnection()) {
+      this.uiToast.showInfoToastBottom('MQTT.CONNECTION.SUCCESSFULLY');
+    } else {
+      this.uiAlert.showMessage(
+        'MQTT.CONNECTION.UNSUCCESSFULLY',
+        undefined,
+        undefined,
+        true,
+      );
+    }
+  }
+
+  public howManyBrewsAreNotPublishedToMqtt() {
+    return this.mqttService.howManyBrewsAreNotPublishedToMqtt();
+  }
+
+  public async publishBrewsToMqtt() {
+    await this.uiAlert.showLoadingSpinner();
+    await this.mqttService.publishAllUnpublished();
+    await this.uiAlert.hideLoadingSpinner();
   }
 
   protected readonly BluetoothTypes = BluetoothTypes;

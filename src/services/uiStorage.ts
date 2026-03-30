@@ -152,6 +152,7 @@ export class UIStorage {
     if (exportObj && 'SETTINGS' in exportObj) {
       exportObj['SETTINGS'][0].visualizer_username = '';
       exportObj['SETTINGS'][0].visualizer_password = '';
+      exportObj['SETTINGS'][0].mqtt_password = '';
     }
 
     return exportObj;

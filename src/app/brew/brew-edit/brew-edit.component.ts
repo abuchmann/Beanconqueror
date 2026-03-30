@@ -47,6 +47,7 @@ import { UIBrewStorage } from '../../../services/uiBrewStorage';
 import { UIHelper } from '../../../services/uiHelper';
 import { UISettingsStorage } from '../../../services/uiSettingsStorage';
 import { UIToast } from '../../../services/uiToast';
+import { MqttService } from '../../../services/mqttService/mqtt-service.service';
 import { VisualizerService } from '../../../services/visualizerService/visualizer-service.service';
 import { SettingsPopoverBluetoothActionsComponent } from '../../settings/settings-popover-bluetooth-actions/settings-popover-bluetooth-actions.component';
 
@@ -85,6 +86,7 @@ export class BrewEditComponent implements OnInit {
   private readonly bleManager = inject(CoffeeBluetoothDevicesService);
   private readonly uiAlert = inject(UIAlert);
   private readonly visualizerService = inject(VisualizerService);
+  private readonly mqttService = inject(MqttService);
   private readonly hapticService = inject(HapticService);
 
   public static readonly COMPONENT_ID: string = 'brew-edit';
@@ -238,6 +240,10 @@ export class BrewEditComponent implements OnInit {
       if (this.data.flow_profile) {
         this.visualizerService.uploadToVisualizer(this.data);
       }
+    }
+
+    if (this.settings.mqtt_active && this.settings.mqtt_publish_automatic) {
+      this.mqttService.publishBrewData(this.data);
     }
 
     this.brewTracking.trackBrew(this.data);

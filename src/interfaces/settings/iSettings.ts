@@ -232,6 +232,14 @@ export interface ISettings {
   visualizer_password: string;
   visualizer_upload_automatic: boolean;
 
+  mqtt_active: boolean;
+  mqtt_url: string;
+  mqtt_username: string;
+  mqtt_password: string;
+  mqtt_topic_prefix: string;
+  mqtt_publish_automatic: boolean;
+  mqtt_publish_recent_brews_count: number;
+
   ai_provider: AI_PROVIDER_ENUM;
   cloud_ai_api_key: string;
   cloud_ai_model: string;

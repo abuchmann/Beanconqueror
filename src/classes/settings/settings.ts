@@ -246,6 +246,14 @@ export class Settings implements ISettings {
   public visualizer_password: string;
   public visualizer_upload_automatic: boolean;
 
+  public mqtt_active: boolean;
+  public mqtt_url: string;
+  public mqtt_username: string;
+  public mqtt_password: string;
+  public mqtt_topic_prefix: string;
+  public mqtt_publish_automatic: boolean;
+  public mqtt_publish_recent_brews_count: number;
+
   public ai_provider: AI_PROVIDER_ENUM;
   public cloud_ai_api_key: string;
   public cloud_ai_model: string;
@@ -587,6 +595,14 @@ export class Settings implements ISettings {
     this.visualizer_username = '';
     this.visualizer_password = '';
     this.visualizer_upload_automatic = false;
+
+    this.mqtt_active = false;
+    this.mqtt_url = 'ws://192.168.1.100:9001';
+    this.mqtt_username = '';
+    this.mqtt_password = '';
+    this.mqtt_topic_prefix = 'beanconqueror';
+    this.mqtt_publish_automatic = false;
+    this.mqtt_publish_recent_brews_count = 5;
 
     this.ai_provider = AI_PROVIDER_ENUM.NO_PROVIDER;
     this.cloud_ai_api_key = '';

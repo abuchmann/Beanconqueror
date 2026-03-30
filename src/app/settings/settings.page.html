@@ -610,6 +610,82 @@
     </ion-card-content>
   </ion-card>
 
+  <ion-card class="margin-top-20">
+    <ion-card-content>
+      <ion-card-title>{{ "MQTT.SECTION_TITLE" | translate }}</ion-card-title>
+      <ion-item>
+        <ion-checkbox label-placement='start' (ngModelChange)="saveSettings();"
+          [(ngModel)]="settings.mqtt_active">
+          <div class='ion-label'>{{ "MQTT.ACTIVATE" | translate }}</div>
+        </ion-checkbox>
+      </ion-item>
+      @if (settings.mqtt_active) {
+      <div>
+        <ion-item>
+          <ion-input (ngModelChange)="saveSettings();" label-placement="stacked"
+            label='{{"MQTT.URL" | translate}}' [(ngModel)]="settings.mqtt_url"
+            name="mqtt_url" placeholder="{{'MQTT.URL_PLACEHOLDER' | translate}}"
+            spellcheck="false" type="text">
+          </ion-input>
+
+          <ion-button (click)="checkMqttConnection()" class="big-icon-only" fill="clear" slot="end"
+            style="margin-left:0px;" tabIndex="2" tappable>
+            <ion-icon class="ion-color-accent" name="checkmark-circle-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label-placement="stacked" label='{{"MQTT.USERNAME" | translate}}'
+            (ngModelChange)="saveSettings();" [(ngModel)]="settings.mqtt_username"
+            name="mqtt_username" placeholder="{{'MQTT.USERNAME' | translate}}" spellcheck="false"
+            type="text">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label-placement="stacked" label='{{"MQTT.PASSWORD" | translate}}'
+            (ngModelChange)="saveSettings();" [(ngModel)]="settings.mqtt_password"
+            name="mqtt_password" placeholder="{{'MQTT.PASSWORD' | translate}}" spellcheck="false"
+            type="password">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label-placement="stacked" label='{{"MQTT.TOPIC_PREFIX" | translate}}'
+            (ngModelChange)="saveSettings();" [(ngModel)]="settings.mqtt_topic_prefix"
+            name="mqtt_topic_prefix" placeholder="beanconqueror" spellcheck="false"
+            type="text">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label-placement="stacked" label='{{"MQTT.RECENT_BREWS_COUNT" | translate}}'
+            (ngModelChange)="saveSettings();" [(ngModel)]="settings.mqtt_publish_recent_brews_count"
+            name="mqtt_publish_recent_brews_count" type="number" min="1" max="20">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-checkbox label-placement='start' (ngModelChange)="saveSettings();"
+            [(ngModel)]="settings.mqtt_publish_automatic">
+            <div class='ion-label'>
+              <h2>{{ "MQTT.PUBLISH_AUTOMATIC" | translate }}</h2>
+              <p>{{ "MQTT.PUBLISH_AUTOMATIC_TOOLTIP" | translate }}</p>
+            </div>
+          </ion-checkbox>
+        </ion-item>
+        @if (howManyBrewsAreNotPublishedToMqtt() > 0 && settings.mqtt_url) {
+        <ion-item [button]="true" tappable (click)='publishBrewsToMqtt()'>
+          <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+          <ion-label>{{ "MQTT.PUBLISH_ALL" | translate }}</ion-label>
+          <ion-note slot="end">{{ howManyBrewsAreNotPublishedToMqtt() }}</ion-note>
+        </ion-item>
+        }
+      </div>
+      }
+    </ion-card-content>
+  </ion-card>
+
   @if (isTextToSpeechSectionAvailable) {
   <ion-card class="margin-top-20">
     <ion-card-content>
