@@ -1777,6 +1777,11 @@ export class SettingsPage {
     return this.mqttService.howManyBrewsAreNotPublishedToMqtt();
   }
 
+  public saveMqttSettingsAndReset() {
+    this.saveSettings();
+    this.mqttService.resetAllPublishedFlags();
+  }
+
   public async publishBrewsToMqtt() {
     await this.uiAlert.showLoadingSpinner();
     await this.mqttService.publishAllUnpublished();

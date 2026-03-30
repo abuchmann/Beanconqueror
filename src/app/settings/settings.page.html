@@ -622,7 +622,7 @@
       @if (settings.mqtt_active) {
       <div>
         <ion-item>
-          <ion-input (ngModelChange)="saveSettings();" label-placement="stacked"
+          <ion-input (ngModelChange)="saveMqttSettingsAndReset();" label-placement="stacked"
             label='{{"MQTT.URL" | translate}}' [(ngModel)]="settings.mqtt_url"
             name="mqtt_url" placeholder="{{'MQTT.URL_PLACEHOLDER' | translate}}"
             spellcheck="false" type="text">
@@ -652,7 +652,7 @@
 
         <ion-item>
           <ion-input label-placement="stacked" label='{{"MQTT.TOPIC_PREFIX" | translate}}'
-            (ngModelChange)="saveSettings();" [(ngModel)]="settings.mqtt_topic_prefix"
+            (ngModelChange)="saveMqttSettingsAndReset();" [(ngModel)]="settings.mqtt_topic_prefix"
             name="mqtt_topic_prefix" placeholder="beanconqueror" spellcheck="false"
             type="text">
           </ion-input>
@@ -660,7 +660,7 @@
 
         <ion-item>
           <ion-input label-placement="stacked" label='{{"MQTT.RECENT_BREWS_COUNT" | translate}}'
-            (ngModelChange)="saveSettings();" [(ngModel)]="settings.mqtt_publish_recent_brews_count"
+            (ngModelChange)="saveMqttSettingsAndReset();" [(ngModel)]="settings.mqtt_publish_recent_brews_count"
             name="mqtt_publish_recent_brews_count" type="number" min="1" max="20">
           </ion-input>
         </ion-item>

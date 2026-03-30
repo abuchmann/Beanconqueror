@@ -168,8 +168,13 @@ export class MqttService {
         brew_date: new Date(b.config.unix_timestamp * 1000).toISOString(),
         bean_name: b.getBean()?.name || '',
         preparation_name: b.getPreparation()?.name || '',
+        grind_size: b.grind_size,
         grind_weight: b.grind_weight,
+        brew_temperature: b.brew_temperature,
+        brew_time: b.brew_time,
         brew_quantity: b.brew_quantity,
+        brew_beverage_quantity: b.brew_beverage_quantity,
+        ratio: b.getBrewRatio(),
         rating: b.rating,
       })),
       count: allBrews.length,
@@ -221,6 +226,16 @@ export class MqttService {
     } catch (error) {
       this.uiLog.error('MQTT publish all error:', error);
       this.uiToast.showInfoToastBottom('MQTT.PUBLISH.UNSUCCESSFULLY');
+    }
+  }
+
+  public async resetAllPublishedFlags(): Promise<void> {
+    const allBrews = this.uiBrewStorage.getAllEntries();
+    for (const brew of allBrews) {
+      if (brew.customInformation?.mqtt_published) {
+        brew.customInformation.mqtt_published = false;
+        await this.uiBrewStorage.update(brew);
+      }
     }
   }
 
