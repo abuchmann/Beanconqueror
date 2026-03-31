@@ -110,9 +110,10 @@ export class MqttService {
       // Catch up any previously unpublished brews
       await this.publishUnpublishedBrews(client, prefix);
 
-      // Refresh recent brews and active beans
+      // Refresh recent brews, active beans, and bean recipes
       await this.publishRecentBrews(client, prefix, settings);
       await this.publishActiveBeans(client, prefix);
+      await this.publishBeanRecipes(client, prefix);
 
       await client.publishAsync(`${prefix}/status`, 'online', {
         retain: true,
@@ -187,6 +188,47 @@ export class MqttService {
     );
   }
 
+  private async publishBeanRecipes(
+    client: mqtt.MqttClient,
+    prefix: string,
+  ): Promise<void> {
+    const activeBeans = this.uiBeanStorage
+      .getAllEntries()
+      .filter((b) => !b.finished);
+
+    const allBrews = this.uiBrewStorage
+      .getAllEntries()
+      .sort((a, b) => b.config.unix_timestamp - a.config.unix_timestamp);
+
+    // For each active bean, find its most recent brew
+    const recipes = [];
+    for (const bean of activeBeans) {
+      const latestBrew = allBrews.find(
+        (b) => b.getBean()?.name === bean.name,
+      );
+      if (latestBrew) {
+        recipes.push({
+          bean_name: bean.name,
+          roaster: bean.roaster,
+          grind_size: latestBrew.grind_size,
+          grind_weight: latestBrew.grind_weight,
+          brew_temperature: latestBrew.brew_temperature,
+          brew_time: latestBrew.brew_time,
+          brew_beverage_quantity: latestBrew.brew_beverage_quantity,
+          brew_quantity: latestBrew.brew_quantity,
+          ratio: latestBrew.getBrewRatio(),
+          preparation_name: latestBrew.getPreparation()?.name || '',
+        });
+      }
+    }
+
+    await client.publishAsync(
+      `${prefix}/beans/recipes`,
+      JSON.stringify(recipes),
+      { retain: true, qos: 1 },
+    );
+  }
+
   private async publishActiveBeans(
     client: mqtt.MqttClient,
     prefix: string,
@@ -220,6 +262,7 @@ export class MqttService {
       await this.publishUnpublishedBrews(client, prefix);
       await this.publishRecentBrews(client, prefix, settings);
       await this.publishActiveBeans(client, prefix);
+      await this.publishBeanRecipes(client, prefix);
 
       await client.endAsync();
       this.uiToast.showInfoToastBottom('MQTT.PUBLISH.SUCCESSFULLY');
