@@ -210,6 +210,7 @@ export class MqttService {
         recipes.push({
           bean_name: bean.name,
           roaster: bean.roaster,
+          mill_name: latestBrew.getMill()?.name || '',
           grind_size: latestBrew.grind_size,
           grind_weight: latestBrew.grind_weight,
           brew_temperature: latestBrew.brew_temperature,
